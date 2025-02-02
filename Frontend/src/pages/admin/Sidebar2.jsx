@@ -21,6 +21,19 @@ const Sidebar2 = () => {
           </Link>
         </div>
       </div>
+
+      <div className="lg:hidden flex flex-col items-start p-5 mt-20 space-y-4 border-r border-gray-300 dark:border-gray-700">
+    <Link to="dashboard" className="flex items-center gap-2 dark:text-white">
+      <ChartNoAxesColumn size={22} />
+    </Link>
+    <Link to="instructor" className="flex items-center gap-2 dark:text-white">
+      <SquareLibrary size={22} />
+    </Link>
+         <Link to="allusers" className="flex items-center gap-2 dark:text-white">
+      <SquareLibrary size={22} />
+    </Link>
+  </div>
+
     <div className="flex-1 p-10 dark:bg-gray-900">
         <Outlet/>
       </div>
