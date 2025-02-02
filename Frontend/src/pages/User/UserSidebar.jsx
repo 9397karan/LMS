@@ -24,7 +24,7 @@ const Sidebar = () => {
     <Link to="dashboard" className="flex items-center gap-2 dark:text-white">
       <ChartNoAxesColumn size={22} />
     </Link>
-    <Link to="course" className="flex items-center gap-2 dark:text-white">
+    <Link to="my-learning" className="flex items-center gap-2 dark:text-white">
       <SquareLibrary size={22} />
     </Link>
   </div>
