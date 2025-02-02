@@ -19,24 +19,11 @@ const CourseExplore = () => {
     const queryParams = new URLSearchParams(location.search);
     const searchTerm = queryParams.get("search");
 
-    const categoryOptions = [
-        { id: "nextjs", label: "Next JS" },
-        { id: "data science", label: "Data Science" },
-        { id: "frontend development", label: "Frontend Development" },
-        { id: "fullstack development", label: "Fullstack Development" },
-        { id: "mern stack development", label: "MERN Stack Development" },
-        { id: "backend development", label: "Backend Development" },
-        { id: "javascript", label: "Javascript" },
-        { id: "python", label: "Python" },
-        { id: "docker", label: "Docker" },
-        { id: "mongodb", label: "MongoDB" },
-        { id: "html", label: "HTML" },
-    ];
-
+  
     const getAllCourses = async () => {
         try {
             setIsLoading(true);
-            const response = await axios.get("http://localhost:5000/course");
+            const response = await axios.get("https://lms-backened-mr34.onrender.com/course");
             const courses = response.data.data;
             if (Array.isArray(courses)) {
                 setAllCourses(courses);
