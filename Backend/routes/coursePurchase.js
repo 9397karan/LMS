@@ -39,8 +39,8 @@ router.post("/create-checkout-session", async (req, res) => {
         },
       ],
       mode: "payment",
-      success_url: `http://localhost:5173/course-progress/${courseId}`, 
-      cancel_url: `http://localhost:5173/course-detail/${courseId}`, 
+      success_url: `https://lms-front-tl73.onrender.com/course-progress/${courseId}`, 
+      cancel_url: `https://lms-front-tl73.onrender.com/course-detail/${courseId}`, 
       metadata: { courseId, userId },
     });
 
