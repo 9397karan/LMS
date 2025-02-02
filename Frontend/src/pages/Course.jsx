@@ -30,7 +30,7 @@ const Course = () => {
   const getAllCourses = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get("http://localhost:5000/course");
+      const response = await axios.get("https://lmsbackend-c3fndbfka-9397karans-projects.vercel.app/course");
       console.log(response.data);
       const courses = response.data.data;
 

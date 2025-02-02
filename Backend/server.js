@@ -19,7 +19,9 @@ app.use(
 );
 
 dbConnect();
-
+app.get('/',(req,res)=>{
+  res.json({message:'Backened Running'})
+})
 // Use body-parser to parse raw JSON
 app.use("/course", instructorRoute);
 app.use("/lecture", lectureRoutes);
