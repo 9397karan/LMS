@@ -58,7 +58,7 @@ const AddCoursePage = () => {
     setLoading(true); // Set loading to true when submitting the form
 
     try {
-      const response = await axios.post("http://localhost:5000/course/add", formData, {
+      const response = await axios.post("https://lms-backened-mr34.onrender.com/course/add", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       alert(response.data.message);
