@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import Hero from "../assets/hero.png";
+import Hero from "../assets/Hero.png";
 import Course from "./Course";
 import Aboutus from "../assets/Aboutus.png";
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
