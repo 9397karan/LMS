@@ -46,7 +46,7 @@ const CourseDetails = () => {
     const fetchCourseDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/lecture/${courseId}`
+          `https://lms-backened-mr34.onrender.com/lecture/${courseId}`
         );
         setCourseDetails(response.data);
       } catch (error) {
