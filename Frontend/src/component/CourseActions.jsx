@@ -10,7 +10,7 @@ const CourseActions = ({ courseId, userId }) => {
   useEffect(() => {
     const checkPurchaseStatus = async () => {
       try {
-        const response = await axios.post("http://localhost:5000/api/check-purchase-status", {
+        const response = await axios.post("https://lms-backened-mr34.onrender.com/api/check-purchase-status", {
           courseId,
           userId,
         });
