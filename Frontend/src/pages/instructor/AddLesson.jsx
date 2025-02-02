@@ -23,7 +23,7 @@ const AddLesson = () => {
   const fetchLessons = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://localhost:5000/lecture/${courseId}`);
+      const response = await axios.get(`https://lms-backened-mr34.onrender.com/lecture/${courseId}`);
       setLectures(response?.data?.lectures || []);
     } catch (error) {
       console.log("Failed to fetch course details.");
