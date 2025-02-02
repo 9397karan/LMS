@@ -23,7 +23,7 @@ const LecturePage = () => {
       try {
          const response = await axios.get(`https://lms-backened-mr34.onrender.com/lecture/${courseId}`);
         const { lectures, course, playingLecture,instructor } = response.data;
-
+console.log(response.data)
         setLectures(lectures);
         setCourse(course);
         setInfo(instructor)
