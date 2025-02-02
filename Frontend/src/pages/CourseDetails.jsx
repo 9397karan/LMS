@@ -50,9 +50,10 @@ const CourseDetails = () => {
         );
         setCourseDetails(response.data);
       } catch (error) {
-        console.error(error);
-        alert(error.response?.data?.message || "Failed to fetch course details.");
-      }
+  console.error('Error fetching course details:', error);
+  alert(error.response?.data?.message || "Failed to fetch course details.");
+}
+
     };
 
     fetchCourseDetails();
