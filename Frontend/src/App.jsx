@@ -52,9 +52,8 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "course-progress/:courseId",
-        element: (
-          <LecturePage />
-        )
+        element:  <LecturePage />
+      
       },
       // admin routes start from here
       {
