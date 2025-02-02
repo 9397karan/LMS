@@ -51,7 +51,7 @@ const AddLesson = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:5000/course/${courseId}/add_lessons`,
+        `https://lms-backened-mr34.onrender.com/course/${courseId}/add_lessons`,
         formData,
         {
           headers: {
@@ -76,7 +76,7 @@ const AddLesson = () => {
   const handleDeleteLesson = async (lectureId, lessonId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:5000/lecture/delete-lesson/${lectureId}/${lessonId}`
+        `https://lms-backened-mr34.onrender.com/lecture/delete-lesson/${lectureId}/${lessonId}`
       );
       if (response.status === 200) {
         alert("Lesson deleted successfully!");
