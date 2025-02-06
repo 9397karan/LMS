@@ -1,4 +1,3 @@
-
 import {
   Card,
   CardContent,
@@ -9,64 +8,66 @@ import {
 } from "../components/ui/card";
 import { Separator } from "../components/ui/separator";
 import { BadgeInfo, Lock, PlayCircle } from "lucide-react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
-import { Link, useNavigate, useParams } from "react-router-dom";
-
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { useEffect } from "react";
 import CourseActions from "@/component/CourseActions";
-import { Spinner } from "@/component/Spinner";
-
+import Loader from "@/component/Loader";
 
 const CourseDetails = () => {
-
-  const userId = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user"))._id : null; 
-
+  const navigate = useNavigate();
   const params = useParams();
   const courseId = params.courseId;
-  const navigate = useNavigate();
-  const [courseDetails, setCourseDetails] = React.useState(null);
+  const [courseDetails, setCourseDetails] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  // Check user authentication
+  const user = localStorage.getItem("user");
+  const userId = user ? JSON.parse(user)._id : null;
 
   useEffect(() => {
-    const handleBackButton = (event) => {
-      event.preventDefault();
-      navigate("/");
-    };
-  
-    window.addEventListener("popstate", handleBackButton);
-  
-    return () => {
-      window.removeEventListener("popstate", handleBackButton);
-    };
-  }, [navigate]);
+    if (!userId) {
+      navigate("/login"); 
+      return;
+    }
 
-
-  useEffect(() => {
     const fetchCourseDetails = async () => {
       try {
-        const response = await axios.get(
-          `https://lms-backened-mr34.onrender.com/lecture/${courseId}`
-        );
+        const response = await axios.get(`https://lms-backened-mr34.onrender.com/lecture/${courseId}`);
         setCourseDetails(response.data);
       } catch (error) {
-  console.error('Error fetching course details:', error);
-  alert(error.response?.data?.message || "Failed to fetch course details.");
-}
-
+        console.error(error);
+        alert(error.response?.data?.message || "Failed to fetch course details.");
+      }
     };
 
     fetchCourseDetails();
-  }, [courseId]);
+  }, [courseId, userId, navigate]);
 
-  if (!courseDetails) {
-    return <Spinner/>;
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (!userId) return null; 
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <Loader />
+      </div>
+    );
   }
 
+  if (!courseDetails) {
+    return <Loader />;
+  }
 
-  const { course, lectures,instructor } = courseDetails;
+  const { course, lectures, instructor } = courseDetails;
   const firstLecture = lectures[0]?.lessons[0] || {};
-  console.log(instructor[0].name)
 
   return (
     <div className="space-y-5 mt-16">
@@ -127,7 +128,7 @@ const CourseDetails = () => {
               </h1>
             </CardContent>
             <CardFooter className="flex justify-center p-4">
-            <CourseActions courseId={courseId} userId={userId} /> 
+              <CourseActions courseId={courseId} userId={userId} />
             </CardFooter>
           </Card>
         </div>
