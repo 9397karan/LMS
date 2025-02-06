@@ -8,6 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "../components/ui/card";
+import Loader from "@/component/Loader";
 import { Lock, PlayCircle } from "lucide-react";
 
 const LecturePage = () => {
@@ -51,7 +52,7 @@ console.log(response.data)
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-        <p>Loading...</p>
+            <Loader/>
       </div>
     );
   }
